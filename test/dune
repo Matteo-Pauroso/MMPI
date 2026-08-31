@@ -1,0 +1,7 @@
+(test
+ (name test_logica)
+ (libraries logica alcotest))
+
+(test
+ (name test_tavola_verita)
+ (libraries logica alcotest))
