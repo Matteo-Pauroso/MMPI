@@ -19,5 +19,4 @@ Chi utilizza questo materiale deve:
 - **attribuire** la fonte
 - **non** usarlo per scopi commerciali
 
-Per maggiori informazioni:\
-`https://creativecommons.org/licenses/by-nc/4.0/` [(creativecommons.org in Bing)](https://www.bing.com/search?q=%22https%3A%2F%2Fcreativecommons.org%2Flicenses%2Fby-nc%2F4.0%2F%22)
+Per maggiori informazioni consultare la [licenza](LICENSE).
