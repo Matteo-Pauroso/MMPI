@@ -117,3 +117,58 @@ let _ =
   Printf.printf "Complemento di B usando A come universo: ";
   List.iter (Printf.printf "%d ") (complemento insieme_A insieme_B);
   Printf.printf "\n"
+
+(** https://ocaml.org/docs/sets#sets
+
+    A quanto pare OCaml mette a disposizione di suo gli insiemi. *)
+
+module IntSet = Set.Make (Int)
+
+let insieme_C =
+  [ elemento_a; elemento_a; elemento_b; elemento_c ] |> IntSet.of_list
+
+let _ =
+  Printf.printf "==========================================\n";
+  Printf.printf "Set invece che liste: ";
+  List.iter (Printf.printf "%d ") (IntSet.to_list insieme_C);
+  Printf.printf "\n"
+
+(** Inoltre Set espone anche metodi per "unione", "intersezione", etc.
+
+    L'unico non esposto è il complemenentare visto che necessità di un universo.
+*)
+
+(** Si può facilmente dimostrare che:
+
+    - I unione I = I;
+    - I unione O = I;
+    - I intersezione I = I;
+    - I intersezione O = O;
+
+    Dove O è l'insieme vuoto. *)
+
+let i_I = insieme_C
+
+let _ =
+  Printf.printf "==========================================\n";
+  Printf.printf "I = ";
+  List.iter (Printf.printf "%d ") (IntSet.to_list i_I);
+  Printf.printf "\n\n";
+  Printf.printf "I unione I = I\n";
+  List.iter (Printf.printf "%d ") (IntSet.to_list (IntSet.union i_I i_I));
+  Printf.printf "\n";
+  Printf.printf "\n";
+  Printf.printf "I unione O = I\n";
+  List.iter (Printf.printf "%d ")
+    (IntSet.to_list (IntSet.union i_I IntSet.empty));
+  Printf.printf "\n";
+  Printf.printf "\n";
+  Printf.printf "I intersezione I = I\n";
+  List.iter (Printf.printf "%d ") (IntSet.to_list (IntSet.inter i_I i_I));
+  Printf.printf "\n";
+  Printf.printf "\n";
+  Printf.printf "I intersezione O = O\n";
+  List.iter (Printf.printf "%d ")
+    (IntSet.to_list (IntSet.inter i_I IntSet.empty))
+
+(** L' ultima verifica non stampa nulla visto che il nuovo insieme è vuoto.*)

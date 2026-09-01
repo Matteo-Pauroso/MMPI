@@ -1,3 +1,12 @@
+module type SET = Set.S
+
+module Prodotto_cartesiano (S1 : SET) (S2 : SET) = struct
+  let calcola insieme_1 insieme_2 =
+    S1.fold
+      (fun e acc -> S2.fold (fun e2 acc -> (e, e2) :: acc) insieme_2 acc)
+      insieme_1 []
+end
+
 (** [implica p q] calcola l'implicazione logica [p -> q].
 
     L'implicazione è falsa solamente quando [p] è vera e [q] è falsa. *)
